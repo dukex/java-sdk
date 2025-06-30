@@ -595,7 +595,10 @@ public class OpenFgaClient {
 
         var options = batchCheckOptions != null
                 ? batchCheckOptions
-                : new ClientBatchCheckClientOptions().maxParallelRequests(DEFAULT_MAX_METHOD_PARALLEL_REQS);
+                : new ClientBatchCheckClientOptions()
+                        .maxParallelRequests(DEFAULT_MAX_METHOD_PARALLEL_REQS)
+                        .setAuthorizationModelId(configuration.getAuthorizationModelId());
+
         if (options.getAdditionalHeaders() == null) {
             options.additionalHeaders(new HashMap<>());
         }
